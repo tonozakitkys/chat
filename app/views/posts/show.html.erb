@@ -18,7 +18,7 @@
 </ul>
 
 <% form_tag :action => :comment do %>
-	<%= text_field_tag :content %>
+	<%= text_field_tag :content, nil, :size => 60 %>
 	<%= hidden_field_tag :post_id, @post.id %>
 	<%= submit_tag %>
 <% end %>
