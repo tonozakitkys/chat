@@ -17,5 +17,11 @@
 <% end %>
 </ul>
 
+<% form_tag :action => :comment do %>
+	<%= text_field_tag :content %>
+	<%= hidden_field_tag :post_id, @post.id %>
+	<%= submit_tag %>
+<% end %>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

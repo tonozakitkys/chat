@@ -82,4 +82,14 @@ class PostsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+	def comment
+		post = Post.find(params[:post_id])
+		comment = Comment.new
+		comment.content = params[:content]
+		post.comments << comment
+		redirect_to post
+		#logger.info "DEBUG!! : " + post inspect
+		#params[:content]
+	end
 end
