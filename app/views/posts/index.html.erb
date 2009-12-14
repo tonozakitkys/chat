@@ -1,22 +1,14 @@
-<h1>Listing posts</h1>
+<h1>チャット</h1>
 
-<table>
-  <tr>
-    <th>Nick</th>
-    <th>Content</th>
-  </tr>
-
+<ul>
 <% @posts.each do |post| %>
-  <tr>
-    <td><%=h post.nick %></td>
-    <td><%=h post.content %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+	<li>
+	(<%=h post.created_at.localtime.strftime("%y/%m/%d %H:%M:%S") %>)
+	[<%=h post.nick %>]
+	<%=h post.content %>
+	(<%=h distance_of_time_in_words_to_now(post.created_at) %> ago)
+	</li>
 <% end %>
-</table>
-
-<br />
+</ul>
 
 <%= link_to 'New post', new_post_path %>
