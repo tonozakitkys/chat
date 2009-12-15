@@ -3,8 +3,9 @@ class PostsController < ApplicationController
   # GET /posts.xml
   def index
     @posts = Post.all
+    @post = Post.new
 
-    respond_to do |format|
+		respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
     end
@@ -45,7 +46,8 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         flash[:notice] = 'Post was successfully created.'
-        format.html { redirect_to(@post) }
+        # format.html { redirect_to(@post) }
+				format.html { redirect_to :action => :index }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
         format.html { render :action => "new" }

@@ -13,3 +13,19 @@
 </ul>
 
 <%= link_to 'New post', new_post_path %>
+
+<% form_for(@post) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :nick %><br />
+    <%= f.text_field :nick %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
